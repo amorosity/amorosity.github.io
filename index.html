@@ -3,25 +3,92 @@
 <head>
     <title>Hex Encryptor</title>
     <style>
-        body { font-family: Arial; background: #111; color: #eee; padding: 20px; }
-        input, textarea, button { width: 100%; margin: 10px 0; padding: 8px; font-size: 16px; }
+        body {
+            background-color: #1c1c1c;
+            color: #e0e0e0;
+            font-family: "Courier New", Courier, monospace;
+            padding: 40px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #ffc107;
+            text-shadow: 0 0 5px #000;
+        }
+
+        textarea {
+            background-color: #2a2a2a;
+            color: #00ffcc;
+            border: 1px solid #444;
+            resize: vertical;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            line-height: 1.5;
+            box-sizing: border-box;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 20px;
+            margin-bottom: 5px;
+            color: #bbb;
+        }
+
+        ::placeholder {
+            color: #666;
+        }
+
+        /* Scrollbar (for nostalgia) */
+        textarea::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        textarea::-webkit-scrollbar-track {
+            background: #1c1c1c;
+        }
+
+        textarea::-webkit-scrollbar-thumb {
+            background-color: #555;
+            border-radius: 3px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #555;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
-    <h2>String to Hex Converter</h2>
-    <textarea id="inputText" placeholder="Enter text here..."></textarea>
-    <button onclick="convertToHex()">Encrypt to Hex</button>
-    <textarea id="outputHex" readonly placeholder="Hex output..."></textarea>
+    <h2>Hex Encryptor</h2>
+
+    <label for="inputText">Input Text</label>
+    <textarea id="inputText" rows="6" placeholder="Type your text here..."></textarea>
+
+    <label for="outputHex">Hex Output</label>
+    <textarea id="outputHex" rows="6" readonly placeholder="Hex result will appear here..."></textarea>
+
+    <footer>
+        &copy; 2025 Hex Encryptor Tool
+    </footer>
 
     <script>
-        function convertToHex() {
-            const text = document.getElementById("inputText").value;
+        const inputText = document.getElementById("inputText");
+        const outputHex = document.getElementById("outputHex");
+
+        inputText.addEventListener("input", () => {
+            const text = inputText.value;
             let hex = "";
             for (let i = 0; i < text.length; i++) {
                 hex += text.charCodeAt(i).toString(16).padStart(2, '0');
             }
-            document.getElementById("outputHex").value = hex;
-        }
+            outputHex.value = hex;
+        });
     </script>
 </body>
 </html>
