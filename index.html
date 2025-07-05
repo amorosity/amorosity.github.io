@@ -1,1 +1,27 @@
-test
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hex Encryptor</title>
+    <style>
+        body { font-family: Arial; background: #111; color: #eee; padding: 20px; }
+        input, textarea, button { width: 100%; margin: 10px 0; padding: 8px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h2>String to Hex Converter</h2>
+    <textarea id="inputText" placeholder="Enter text here..."></textarea>
+    <button onclick="convertToHex()">Encrypt to Hex</button>
+    <textarea id="outputHex" readonly placeholder="Hex output..."></textarea>
+
+    <script>
+        function convertToHex() {
+            const text = document.getElementById("inputText").value;
+            let hex = "";
+            for (let i = 0; i < text.length; i++) {
+                hex += text.charCodeAt(i).toString(16).padStart(2, '0');
+            }
+            document.getElementById("outputHex").value = hex;
+        }
+    </script>
+</body>
+</html>
